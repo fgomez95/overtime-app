@@ -1,0 +1,42 @@
+[1mdiff --git a/spec/features/post_spec.rb b/spec/features/post_spec.rb[m
+[1mindex 2e945c1..e69de29 100644[m
+[1m--- a/spec/features/post_spec.rb[m
+[1m+++ b/spec/features/post_spec.rb[m
+[36m@@ -1,36 +0,0 @@[m
+[31m-require 'rails_helper'[m
+[31m-[m
+[31m-describe 'navigate' do [m
+[31m-    describe 'index' do [m
+[31m-        before do[m
+[31m-            visit posts_path[m
+[31m-        end[m
+[31m-            [m
+[31m-        it 'can be reached' do [m
+[31m-            expect(page.status_code).to be(200)[m
+[31m-        end[m
+[31m-        [m
+[31m-        it 'has a "posts" as title' do [m
+[31m-            expect(page).to have_content(/Posts/)[m
+[31m-        end[m
+[31m-    end[m
+[31m-    [m
+[31m-    describe 'creation' do [m
+[31m-        before do [m
+[31m-            visit new_post_path[m
+[31m-        end[m
+[31m-        [m
+[31m-        it 'has a new form that can be reached' do [m
+[31m-            expect(page.status_code).to be(200)[m
+[31m-        end [m
+[31m-        [m
+[31m-        it 'can be created from new form page' do [m
+[31m-            fill_in 'post[date]', with: Date.today[m
+[31m-            fill_in 'post[rationale]', with: 'Some rationale'[m
+[31m-            [m
+[31m-            click_on "Save"[m
+[31m-            [m
+[31m-            expect(page).to have_content('Some rationale')[m
+[31m-        end[m
+[31m-    end[m
+[31m-end[m
+\ No newline at end of file[m
