@@ -3,6 +3,13 @@ require 'rails_helper'
 describe 'navigate' do 
     describe 'index' do 
         before do
+            user = User.create!(
+                first_name:'John', 
+                last_name:'Doe', 
+                email:'some@email.com', 
+                password:'secret', 
+                password_confirmation:'secret')
+            login_as(user, :scope => :user)
             visit posts_path
         end
             
