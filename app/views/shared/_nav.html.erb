@@ -17,7 +17,7 @@
 		<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 			<li> <%= link_to "Edit details", edit_user_registration_path %> </li>
 			<li class="divider"/>
-			<li> <%= link_to "Logout", destroy_user_session_path, method: :detele %> </li>
+			<li> <%= link_to "Log out", destroy_session_path(:user), method: :delete %> </li>
 		</ul> 
 	</li>
 </ul>
