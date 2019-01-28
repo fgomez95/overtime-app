@@ -1,37 +1,37 @@
 require 'rails_helper'
 
 describe 'navigate' do 
+    before do
+        @user = User.create!(
+            first_name: 'John', 
+            last_name: 'Doe', 
+            email: 'some@email.com', 
+            password: 'secret', 
+            password_confirmation: 'secret')
+        login_as(@user, :scope => :user)
+    end
+    
     describe 'index' do 
-        before do
-            user = User.create!(
-                first_name:'John', 
-                last_name:'Doe', 
-                email:'some@email.com', 
-                password:'secret', 
-                password_confirmation:'secret')
-            login_as(user, :scope => :user)
+        before do 
+            @user.posts.create!(date: Date.today, rationale: "Display Posts")
             visit posts_path
         end
-            
+        
         it 'can be reached' do 
             expect(page.status_code).to be(200)
         end
         
-        it 'has a "posts" as title' do 
+        it 'has "Posts" as title' do 
             expect(page).to have_content(/Posts/)
         end
         
+        it 'displays the posts' do 
+            expect(page).to have_content(/Display Posts/)
+        end
     end
     
     describe 'creation' do 
         before do 
-            user = User.create!(
-                first_name:'John', 
-                last_name:'Doe', 
-                email:'some@email.com', 
-                password:'secret', 
-                password_confirmation:'secret')
-            login_as(user, :scope => :user)
             visit new_post_path
         end
         
