@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :delete, :update]
+    before_action :set_post, only: [:show, :edit, :delete, :update, :edit]
     
     def index
         @posts = Post.all
@@ -12,9 +12,20 @@ class PostsController < ApplicationController
     def create 
         @post = current_user.posts.new(post_params)
         if @post.save
-            redirect_to post_path(@post), notice: 'your post has been created'
+            redirect_to @post, notice: 'your post has been created'
         else 
             render :new
+        end
+    end
+    
+    def edit
+    end
+    
+    def update
+        if @post.update(post_params)
+            redirect_to @post, notice: 'The post has been updated'
+        else
+            redirect_to edit_post_path(@post), notice: 'Unable to update post'
         end
     end
     
