@@ -2,18 +2,13 @@ require 'rails_helper'
 
 describe 'navigate' do 
     before do
-        @user = User.create!(
-            first_name: 'John', 
-            last_name: 'Doe', 
-            email: 'some@email.com', 
-            password: 'secret', 
-            password_confirmation: 'secret')
+        @user = FactoryBot.create(:user)
         login_as(@user, :scope => :user)
     end
     
     describe 'index' do 
         before do 
-            @user.posts.create!(date: Date.today, rationale: "Display Posts")
+            FactoryBot.create(:post)
             visit posts_path
         end
         
@@ -25,8 +20,8 @@ describe 'navigate' do
             expect(page).to have_content(/Posts/)
         end
         
-        it 'displays the posts' do 
-            expect(page).to have_content(/Display Posts/)
+        it 'should display the posts' do 
+            expect(page).to have_content(/Some|rationale/)
         end
     end
     

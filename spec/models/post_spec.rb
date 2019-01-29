@@ -3,15 +3,8 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe "Post creation" do 
     before do
-      @user = User.create!(
-        first_name:'John', 
-        last_name:'Doe', 
-        email:'some@email.com', 
-        password:'secret', 
-        password_confirmation:'secret')
-      @post = @user.posts.create!(
-        date: Date.current, 
-        rationale: "Some text")
+      @user = FactoryBot.create(:user)
+      @post = FactoryBot.create(:post)
     end
       
     it "should be created" do 
@@ -25,7 +18,7 @@ RSpec.describe Post, type: :model do
     end
     
     it "should be associated with the user" do 
-      expect(@post.user_id).to eq(@user.id)
+      expect(@post.user_id).to eq(User.last.id)
     end
   end
 end
