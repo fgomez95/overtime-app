@@ -11,6 +11,7 @@
 // about supported directives.
 //= require jquery
 //= require bootstrap-sprockets
+//= require gritter
 //= require jquery_ujs
 //= require rails-ujs
 //= require activestorage

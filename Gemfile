@@ -15,6 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass', '~> 3.4'
 gem 'ffi', '~> 1.9.6'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'gritter', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
