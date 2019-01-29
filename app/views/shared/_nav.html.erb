@@ -9,7 +9,9 @@
 	<li class="<%= active?(posts_path) %>">
 		<%= link_to 'Time Entries', posts_path %>
 	</li>
-	
+	<li class="<%= active?(new_post_path) %>">
+		<%= link_to 'New Post', new_post_path, id: "new-post-link" %>
+	</li>
 	<li class="dropdown pull-right">
 		 <a class="dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
 		     Account <strong class="caret"></strong>
