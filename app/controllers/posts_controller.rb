@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :delete, :update, :edit]
+    before_action :set_post, only: [:show, :edit, :destroy, :update, :edit]
     
     def index
         @posts = Post.all
@@ -30,6 +30,14 @@ class PostsController < ApplicationController
     end
     
     def show 
+    end
+    
+    def destroy
+        if @post.delete
+            redirect_to posts_path, notice: 'The post has been deleted'
+        else
+            redirect_to pos_path, notice: 'Unable to delete post'
+        end
     end
     
     private
