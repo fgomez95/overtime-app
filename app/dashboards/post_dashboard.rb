@@ -11,8 +11,8 @@ class PostDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     id: Field::Number,
     date: Field::DateTime,
-    rationale: Field::Text,
-    created_at: Field::DateTime,
+    rationale: Field::Text.with_options(searchable: true),
+    created_at: Field::DateTime.with_options(searchable: true),
     updated_at: Field::DateTime,
   }.freeze
 
