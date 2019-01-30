@@ -16,6 +16,8 @@ gem 'bootstrap-sass', '~> 3.4'
 gem 'ffi', '~> 1.9.6'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'gritter', '~> 1.2'
+gem 'administrate', '~> 0.11.0'
+gem 'bourbon', '~> 5.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

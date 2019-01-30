@@ -11,7 +11,7 @@ FactoryBot.define do
     password_confirmation { 'secret' }
   end
   
-  factory :second_user, class: 'AdminUser' do
+  factory :admin_user, class: 'AdminUser' do
     first_name { 'D' }
     last_name { 'Admin' }
     email { generate :email }
