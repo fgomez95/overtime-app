@@ -17,7 +17,7 @@
 		     Account <strong class="caret"></strong>
 		 </a>
 		<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			<li> <%= link_to "TODO: Admin Dashboard", root_path %> </li>
+			<li> <%= link_to "Admin", admin_root_path, id: "admin-dashboard-link" %> </li>
 			<li class="divider"/>
 			<li> <%= link_to "Log out", destroy_session_path(:user), method: :delete %> </li>
 		</ul> 
