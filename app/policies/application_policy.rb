@@ -33,7 +33,10 @@ class ApplicationPolicy
   def destroy?
     false
   end
-
+  
+  def self.admin_types
+    ['AdminUser']
+  end
   class Scope
     attr_reader :user, :scope
 
