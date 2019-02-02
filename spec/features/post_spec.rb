@@ -1,14 +1,15 @@
 require 'rails_helper'
 
-describe 'navigate' do 
+describe 'navigate posts' do 
     before do
         @user = FactoryBot.create(:user)
         login_as(@user, :scope => :user)
+        @post = FactoryBot.create(:post)
+        @post.update(user_id: @user.id)
     end
     
     describe 'index' do 
         before do 
-            FactoryBot.create(:post)
             visit posts_path
         end
         
@@ -49,18 +50,15 @@ describe 'navigate' do
             expect(page).to have_content('Some rationale')
         end
         
-        it 'will have a user associated it' do
+        it 'validates presence of user' do
             fill_in 'post[date]', with: Date.today
             fill_in 'post[rationale]', with: "User Association"
             click_on "Save"
-            expect(User.last.posts.last.rationale).to eq("User Association")
+            expect(@user.posts.last.rationale).to eq("User Association")
         end
     end
     
     describe 'edit' do 
-        before do 
-            @post = FactoryBot.create(:post)
-        end
         it 'can be reached from the edit link in index' do 
             visit posts_path
             click_link("edit-post-#{@post.id}")
@@ -68,20 +66,23 @@ describe 'navigate' do
         end
         
         it 'can be modified' do 
-            visit edit_post_path(@post)
+            visit edit_post_path(@post.id)
             fill_in 'post[date]', with: Date.yesterday
             fill_in 'post[rationale]', with: "Hello World"
             click_on "Save"
-            
             expect(page).to have_content("Hello World")
         end
+        
+        #it 'cannot be edited by unauthorized user' do 
+        #    logout(:user)
+        #    unauthorized_user = FactoryBot.create(:non_authorized_user)
+        #    login_as(unauthorized_user,:scope => :user)
+        #    visit edit_post_path(@post)
+        #    expect(page).to have_current_path(root_path)
+        #end
     end
     
     describe 'delete' do 
-        before do 
-            @post = FactoryBot.create(:post)
-            visit posts_path
-        end
         it 'can be deleted' do 
             visit posts_path
             click_link("delete-post-#{@post.id}")
