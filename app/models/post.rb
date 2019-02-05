@@ -6,4 +6,5 @@ class Post < ApplicationRecord
         approved: 1,
         rejected: 2,
     }
+    scope :user_posts, -> (user){where(user_id: user.id)}
 end
