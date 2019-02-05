@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :destroy, :update, :edit]
-    
+
     def index
-        @posts = Post.all
+        @posts = current_user.posts
     end
     
     def new 
@@ -32,6 +32,7 @@ class PostsController < ApplicationController
     end
     
     def show 
+        authorize @post
     end
     
     def destroy
@@ -51,4 +52,5 @@ class PostsController < ApplicationController
     def set_post
         @post=Post.find(params[:id])
     end
+
 end

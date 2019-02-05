@@ -47,7 +47,7 @@ describe 'navigate posts' do
             fill_in 'post[date]', with: Date.today
             fill_in 'post[rationale]', with: 'Some rationale'
             click_on "Save"
-            expect(page).to have_content('Some rationale')
+            expect(Post.last.id).to eq(@user.posts.last.id)
         end
         
         it 'validates presence of user' do
@@ -72,14 +72,6 @@ describe 'navigate posts' do
             click_on "Save"
             expect(page).to have_content("Hello World")
         end
-        
-        #it 'cannot be edited by unauthorized user' do 
-        #    logout(:user)
-        #    unauthorized_user = FactoryBot.create(:non_authorized_user)
-        #    login_as(unauthorized_user,:scope => :user)
-        #    visit edit_post_path(@post)
-        #    expect(page).to have_current_path(root_path)
-        #end
     end
     
     describe 'delete' do 
@@ -87,6 +79,30 @@ describe 'navigate posts' do
             visit posts_path
             click_link("delete-post-#{@post.id}")
             expect(page.status_code).to be(200)
+        end
+    end
+    
+    describe 'access' do 
+        before do 
+            logout(:user)
+            second_user = FactoryBot.create(:non_authorized_user)
+            login_as(second_user,:scope => :user)
+        end
+        
+        it 'individual post visibility is limited to the user creator' do
+            visit post_path(@post)
+            expect(page).to have_current_path(root_path)
+        end
+        
+        it 'includes only the user posts' do 
+            rationale_match = @post.rationale
+            visit posts_path
+            expect(page).to_not have_content(rationale_match)
+        end
+        
+        it 'cannot be edited by unauthorized user' do 
+            visit edit_post_path(@post)
+            expect(page).to have_current_path(root_path)
         end
     end
 end

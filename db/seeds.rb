@@ -28,5 +28,6 @@ end
 
 100.times do |post|
     user.posts.create!(date: Date.today, rationale:"##{post} rationale")
+    unauthorized_user.posts.create!(date: Date.today, rationale:"#{post}. unauthorized user post")
 end
 puts 'posts created'
