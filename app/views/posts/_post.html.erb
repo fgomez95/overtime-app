@@ -3,6 +3,7 @@
     <td><%= truncate(post.rationale) %></td>
     <td><%= post.date %></td>
     <td><%= post.user.full_name %></td>
+    <td><%= status_label post.status %></td>
     <td><%= link_to "Edit", edit_post_path(post), id: "edit-post-#{post.id}" %></td>
     <td>
     <%= link_to "Delete Post", post_path(post), 
