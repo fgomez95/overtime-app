@@ -19,6 +19,7 @@ gem 'gritter', '~> 1.2'
 gem 'administrate', '~> 0.11.0'
 gem 'bourbon', '~> 5.1'
 gem 'pundit', '~> 2.0', '>= 2.0.1'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
