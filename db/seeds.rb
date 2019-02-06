@@ -26,8 +26,15 @@ if admin_user = AdminUser.create!(
     puts 'admin created'
 end
 
-100.times do |post|
-    user.posts.create!(date: Date.today, rationale:"##{post} rationale")
-    unauthorized_user.posts.create!(date: Date.today, rationale:"#{post}. unauthorized user post")
+20.times do |post|
+    User.all.each do |user|
+        user.posts.create!(
+            date: Date.today, 
+            rationale: Faker::Hacker.say_something_smart, 
+            overtime_request: Random.rand(0.1..100).truncate(2),
+            status: Random.rand(0..2)
+        )
+    end
 end
+
 puts 'posts created'

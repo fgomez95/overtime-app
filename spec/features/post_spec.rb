@@ -46,6 +46,7 @@ describe 'navigate posts' do
         it 'can be created from new form page' do
             fill_in 'post[date]', with: Date.today
             fill_in 'post[rationale]', with: 'Some rationale'
+            fill_in 'post[overtime_request]', with: 0.5
             click_on "Save"
             expect(Post.last.id).to eq(@user.posts.last.id)
         end
@@ -53,6 +54,7 @@ describe 'navigate posts' do
         it 'validates presence of user' do
             fill_in 'post[date]', with: Date.today
             fill_in 'post[rationale]', with: "User Association"
+            fill_in 'post[overtime_request]', with: 0.5
             click_on "Save"
             expect(@user.posts.last.rationale).to eq("User Association")
         end

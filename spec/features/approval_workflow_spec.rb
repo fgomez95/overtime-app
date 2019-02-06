@@ -23,4 +23,15 @@ describe 'navigate' do
             expect(page).to_not have_current_path(posts_path)
         end
     end
+    
+    describe 'approved' do 
+        it 'cannot be edited after is approved' do 
+            logout(@admin_user)
+            @user = FactoryBot.create(:user)
+            @post.update(user_id: @user.id, status: 'approved')
+            login_as(@user, :scope => :user)
+            visit edit_post_path(@post)
+            expect(page).to have_current_path(root_path)
+        end
+    end
 end

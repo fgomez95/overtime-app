@@ -11,10 +11,24 @@ RSpec.describe Post, type: :model do
         expect(@post).to be_valid
     end
     
-    it 'should validate presence of date and rationale' do 
-        @post.rationale=nil
-        @post.date=nil
+    it 'should validate presence of rationale' do 
+        @post.update(rationale: nil)
         expect(@post).to be_invalid
+    end
+    
+    it 'should validate presence of date' do 
+      @post.update(date: nil)
+      expect(@post).to be_invalid
+    end
+    
+    it 'should validate presence of overtime_request' do 
+      @post.update(overtime_request: nil)
+      expect(@post).to be_invalid
+    end
+    
+    it 'should validate overtime_request is greater than 0.0' do 
+      @post.update(overtime_request: 0.0)
+      expect(@post).to be_invalid
     end
     
     it 'should be associated with the user' do 
