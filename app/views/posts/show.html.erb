@@ -1,1 +1,14 @@
-<p><%= @post.rationale %>- <%= @post.date %></p>
+<h3><%= @post.rationale %></h3>
+<hr>
+<div class="well">
+    <h4><b>Date:</b> <%= @post.date %></h4>
+    <h4><b>Requested:</b> <%= @post.overtime_request %> h.</h4>
+    <h4><b>Employee:</b> <%= @post.user.full_name %></h4>
+    <h4><b>Status:</b> <%= @post.status %></h4>
+</div>
+
+<% if policy(@post).update? %>
+    <%= link_to "Edit", edit_post_path(@post) %>  
+    <%= link_to "Delete Post", post_path(@post), method: :delete, id: "delete-post-#{@post.id}", 
+    data: { confirm: 'Are you sure?' } %></td>
+<% end %>
