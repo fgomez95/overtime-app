@@ -5,8 +5,13 @@
     <td><%= post.user.full_name %></td>
     <td><%= status_label post.status %></td>
     <td><strong><%= post.overtime_request %></strong></td>
-    <td><%= link_to "Edit", edit_post_path(post), id: "edit-post-#{post.id}" if policy(post).update? %></td>
     <td>
-    <%= link_to "Delete Post", post_path(post), 
-    method: :delete, id: "delete-post-#{post.id}", data: { confirm: 'Are you sure?' } %></td>
+        <%= link_to "", edit_post_path(post), 
+        id: "edit-post-#{post.id}", 
+        class: 'glyphicon glyphicon-pencil glyphicon index-icons' if policy(post).update? %>
+    </td>
+    <td>
+    <%= link_to "", post_path(post), 
+    method: :delete, id: "delete-post-#{post.id}", data: { confirm: 'Are you sure?' }, 
+    class: 'glyphicon glyphicon-trash index-icons' if policy(post).update? %></td>
 </tr>
