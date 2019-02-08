@@ -20,6 +20,7 @@ gem 'administrate', '~> 0.11.0'
 gem 'bourbon', '~> 5.1'
 gem 'pundit', '~> 2.0', '>= 2.0.1'
 gem 'faker'
+gem 'twilio-ruby', '~> 5.20'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem "factory_bot_rails"
+  gem 'dotenv-rails'
 end
 
 group :development do

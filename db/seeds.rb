@@ -3,7 +3,9 @@ if user = User.create!(
     last_name: 'Doe', 
     email: 'jdoe@fakemail.com', 
     password: 'secret', 
-    password_confirmation: 'secret')
+    password_confirmation: 'secret',
+    phone_number: '5554441235'
+    )
     puts 'user created'
 end
 
@@ -12,7 +14,8 @@ if unauthorized_user = User.create!(
     last_name: 'Authorized',
     email: 'unauthorized@fakemail.com',
     password: 'secret',
-    password_confirmation: 'secret'
+    password_confirmation: 'secret',
+    phone_number: '5554441235'
     )
     puts 'unauthorized user created'
 end
@@ -22,7 +25,9 @@ if admin_user = AdminUser.create!(
     last_name: 'Administrator', 
     email: 'dadmin@pimpmail.com', 
     password: 'secret', 
-    password_confirmation: 'secret')
+    password_confirmation: 'secret',
+    phone_number: '5554441235'
+    )
     puts 'admin created'
 end
 
