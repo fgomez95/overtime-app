@@ -27,11 +27,11 @@ RSpec.describe User, type: :model do
     end
     
     it 'requires phone number to only contain integers' do 
-      @user.update(phone_number: 'adsfa465..--')
+      @user.update(phone_number: 'sfa465..--')
       expect(@user).to be_invalid
     end
     
-    it 'validates the phone_number length to equal 10 character long' do 
+    it 'validates the phone_number length to equal 8 character long' do 
       @user.update(phone_number: '0')
       expect(@user).to be_invalid
     end

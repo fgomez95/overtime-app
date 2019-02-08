@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :posts
   validates_presence_of :first_name, :last_name, :phone_number
-  validates :phone_number, length: { is: 10 }
+  validates :phone_number, length: { is: 8 }
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
