@@ -14,6 +14,11 @@ RSpec.describe User, type: :model do
         @user.last_name=nil
         expect(@user).to be_invalid
     end
+    
+    it 'should validate presence of phone number' do 
+      @user.update(phone_number: nil)
+      expect(@user).to be_invalid
+    end
   end
   
   describe 'custom methods' do 

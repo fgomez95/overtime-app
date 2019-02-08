@@ -16,13 +16,15 @@ class UserDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     type: Field::String,
+    phone_number: Field::String.with_options(searchable: false)
   }.freeze
 
   COLLECTION_ATTRIBUTES = [
     :posts,
     :id,
     :email,
-    :type
+    :type,
+    :phone_number
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
@@ -39,12 +41,14 @@ class UserDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :type,
+    :phone_number
   ].freeze
 
   FORM_ATTRIBUTES = [
     :email,
     :first_name,
     :last_name,
-    :password
+    :password,
+    :phone_number
   ].freeze
 end
