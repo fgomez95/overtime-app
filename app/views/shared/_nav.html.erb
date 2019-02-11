@@ -3,27 +3,34 @@
 </div>
 
 <ul class="custom-nav nav nav-tabs">
+	
 	<li class="<%= active?(root_path) %>">
 		<%= link_to 'Home', root_path %>
 	</li>
+	
 	<li class="<%= active?(posts_path) %>">
 		<%= link_to 'Time Entries', posts_path %>
 	</li>
+	
 	<li class="<%= active?(new_post_path) %>">
 		<%= link_to 'New Post', new_post_path, id: "new-post-link" %>
 	</li>
+	
+	<%= render 'shared/audit_log_tab' if current_user && policy(AuditLog).index? %>
+	
 	<% if current_user %>
-	<li class="dropdown pull-right">
-		 <a class="dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
-		     Account <strong class="caret"></strong>
-		 </a>
-		<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			<% if current_user.type == 'AdminUser' %>
-				<li> <%= link_to "Admin", admin_root_path, id: "admin-dashboard-link" %> </li>
-				<li class="divider"/>
-			<% end %>
-			<li> <%= link_to "Log out", destroy_session_path(:user), method: :delete %> </li>
-		</ul> 
-		<% end %>
+		
+		<li class="dropdown pull-right">
+		 	<a class="dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">
+		     	Account <strong class="caret"></strong>
+		 	</a>
+			<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				<% if current_user.type == 'AdminUser' %>
+					<li> <%= link_to "Admin", admin_root_path, id: "admin-dashboard-link" %> </li>
+					<li class="divider"/>
+				<% end %>
+				<li> <%= link_to "Log out", destroy_session_path(:user), method: :delete %> </li>
+			</ul> 
+	<% end %>
 	</li>
 </ul>
