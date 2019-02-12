@@ -4,7 +4,7 @@ if user = User.create!(
     email: 'jdoe@fakemail.com', 
     password: 'secret', 
     password_confirmation: 'secret',
-    phone_number: '5554441235'
+    phone_number: '55544412'
     )
     puts 'user created'
 end
@@ -15,7 +15,7 @@ if unauthorized_user = User.create!(
     email: 'unauthorized@fakemail.com',
     password: 'secret',
     password_confirmation: 'secret',
-    phone_number: '5554441235'
+    phone_number: '55544412'
     )
     puts 'unauthorized user created'
 end
@@ -26,7 +26,7 @@ if admin_user = AdminUser.create!(
     email: 'dadmin@pimpmail.com', 
     password: 'secret', 
     password_confirmation: 'secret',
-    phone_number: '5554441235'
+    phone_number: '55544412'
     )
     puts 'admin created'
 end
@@ -38,8 +38,13 @@ end
             rationale: Faker::Hacker.say_something_smart, 
             overtime_request: Random.rand(0.1..100).truncate(2),
             status: Random.rand(0..2)
-        )
+            )
+        user.audit_logs.create!(
+            start_date: Date.today - Random.rand(5..7),
+            end_date: Date.today + Random.rand(1..5),
+            status: Random.rand(0..2)
+            )
     end
 end
 
-puts 'posts created'
+puts 'posts and logs created'

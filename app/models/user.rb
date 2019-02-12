@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts
+  has_many :audit_logs
   validates_presence_of :first_name, :last_name, :phone_number
   validates :phone_number, length: { is: 8 }
   
