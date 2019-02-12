@@ -42,6 +42,7 @@ end
         user.audit_logs.create!(
             start_date: Date.today - Random.rand(5..7),
             end_date: Date.today + Random.rand(1..5),
+            status: Random.rand(0..2)
             )
     end
 end
