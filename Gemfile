@@ -21,6 +21,7 @@ gem 'bourbon', '~> 5.1'
 gem 'pundit', '~> 2.0', '>= 2.0.1'
 gem 'faker'
 gem 'twilio-ruby', '~> 5.20'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
