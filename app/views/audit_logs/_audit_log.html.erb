@@ -1,5 +1,9 @@
 <tr>
     <td>
+        <%= audit_log.id %>
+    </td>
+    
+    <td>
         <%= audit_log.user.full_name %>
     </td>
         
@@ -10,6 +14,7 @@
     <td>
         <%= audit_log.end_date %>
     </td>
+    
     <td>
         <%= status_label audit_log.status %>
     </td>

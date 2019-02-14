@@ -2,13 +2,20 @@
 
 <table class="table">
     <tr>
+        <th>Id</th>
         <th>User</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Status</th>
     </tr>
-    <%= render @audit_logs %>
+    
+    <tbody id="audit_logs">
+        <%= render @audit_logs %>
+    </tbody>
+    
     
 </table>
 
-<%= paginate @audit_logs %>
+<div id="paginator">
+   <%= paginate @audit_logs, remote: true %> 
+</div>
