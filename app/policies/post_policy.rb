@@ -1,4 +1,8 @@
 class PostPolicy < ApplicationPolicy
+    def approve?
+        admin?
+    end
+    
     def update?
         return true if admin? || (owner? && !record.approved?)
     end
