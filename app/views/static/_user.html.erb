@@ -1,11 +1,9 @@
 <div class="container fluid">
     <div class="row">
-        <div class="col-md-5 column jumbotron emp-block">
-            sdfasf
-        </div>
-        
-        <div class="col-md-5 column jumbotron emp-block">
-            asdfasd
+        <div class="pending-homepage emp-block">
+            <h3 class="text-center">Pending Confirmation</h3>
+            <%= render partial: 'pending_confirmation', 
+            locals: { pending_audit_logs: @pending_audit_logs } %>
         </div>
     </div>
 </div>
