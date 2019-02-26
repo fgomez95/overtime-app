@@ -13,7 +13,7 @@
 	</li>
 	
 	<li class="<%= active?(new_post_path) %>">
-		<%= link_to 'New Post', new_post_path, id: "new-post-link" %>
+		<%= link_to 'Request Overtime', new_post_path, id: "new-post-link" %>
 	</li>
 	
 	<%= render 'shared/audit_log_tab' if current_user && policy(AuditLog).index? %>
