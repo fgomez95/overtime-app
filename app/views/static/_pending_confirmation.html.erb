@@ -1,5 +1,7 @@
 <% pending_audit_logs.each do |audit_log| %>
-    <%= link_to "No overtime during #{audit_log.start_date}", root_path, 
+    <%= link_to "No overtime during #{audit_log.start_date}", 
+    confirm_audit_log_path(audit_log), 
     class: "btn btn-primary btn-block btn-lg", 
-    data: {confirm: 'Confirm you did not perform overtime' } %>
+    data: {confirm: 'Confirm you did not perform overtime' },
+    id: "confirm-#{audit_log.id}" %>
 <% end %>

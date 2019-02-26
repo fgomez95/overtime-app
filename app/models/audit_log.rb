@@ -3,7 +3,7 @@ class AuditLog < ApplicationRecord
   validates_presence_of :status, :start_date
   enum status: {
     pending: 0,
-    approved: 1,
+    confirmed: 1,
     rejected: 2,
   }
   after_initialize :set_defaults
